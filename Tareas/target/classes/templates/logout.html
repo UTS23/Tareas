@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redireccionando en 5 segundos...</title>
+    <!-- Estilos CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 400px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Redireccionando en 5 segundos...</h1>
+    <button onclick="cancelRedirect()">Cancelar</button>
+</div>
+
+<script>
+    // Temporizador para redireccionar después de 5 segundos
+    var redirectTimer = setTimeout(redirect, 5000);
+
+    // Función para redireccionar a la página principal
+    function redirect() {
+        window.location.href = "/";
+    }
+
+    // Función para cancelar la redirección
+    function cancelRedirect() {
+        clearTimeout(redirectTimer);
+    }
+</script>
+</body>
+</html>

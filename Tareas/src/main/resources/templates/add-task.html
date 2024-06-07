@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agregar Tarea</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
+    <style>
+        /* Estilos personalizados para el formulario */
+        body {
+            background-color: #f8f8f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .ui.container {
+            margin-top: 50px;
+        }
+        .ui.header {
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+        form label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        form input[type="text"], form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        form button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #2185D0;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form button[type="submit"]:hover {
+            background-color: #1678c2;
+        }
+    </style>
+</head>
+<body>
+<div class="ui container">
+    <h1 class="ui header">Agregar Tarea</h1>
+    <form th:action="@{/tasks/add(userId=${userId})}" th:object="${task}" method="post">
+        <label>Título:</label>
+        <input type="text" th:field="*{title}"/><br/>
+        <label>Descripción:</label>
+        <input type="text" th:field="*{description}"/><br/>
+        <label>Estado:</label>
+        <select th:field="*{status}">
+            <option value="pendiente">Pendiente</option>
+            <option value="en_progreso">En Progreso</option>
+            <option value="completado">Completado</option>
+        </select><br/>
+        <button type="submit">Agregar</button>
+    </form>
+</div>
+</body>
+</html>
+

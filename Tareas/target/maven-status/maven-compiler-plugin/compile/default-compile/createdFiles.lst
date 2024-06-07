@@ -1,0 +1,10 @@
+com\tareas\brayan\repository\TaskRepository.class
+com\tareas\brayan\entidades\Task.class
+com\tareas\brayan\Controller\UserController.class
+com\tareas\brayan\Controller\TaskController.class
+com\tareas\brayan\service\TaskService.class
+com\tareas\brayan\service\UserService.class
+com\tareas\brayan\service\TaskServiceImpl.class
+com\tareas\brayan\entidades\User.class
+com\tareas\brayan\repository\UserRepository.class
+com\tareas\brayan\TareasApplication.class

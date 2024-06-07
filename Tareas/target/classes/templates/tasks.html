@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tasks</title>
+    <!-- Semantic UI CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
+    <style>
+        /* Custom CSS for the table */
+        body {
+            background-color: #f8f8f8;
+            padding-top: 40px; /* Agregamos un poco de espacio entre la barra de navegación y el contenido */
+        }
+        .ui.container {
+            margin-top: 20px; /* Reducimos el margen superior */
+        }
+        .ui.header {
+            text-align: center;
+            color: #2185d0; /* Cambiamos el color del encabezado */
+        }
+        .ui.celled.table {
+            margin-top: 20px;
+            border-color: #2185d0; /* Cambiamos el color de los bordes de la tabla */
+        }
+        .ui.button {
+            margin-right: 5px;
+        }
+        .ui.button:last-child {
+            margin-right: 0;
+        }
+        .ui.menu .item {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation Bar -->
+<div class="ui inverted menu">
+    <a class="item" th:href="@{/logout}">
+        Cerrar Sesión
+    </a>
+    <a class="item" th:href="@{/api/changePassword(userId=${userId})}">
+        Cambiar Contraseña
+    </a>
+    <a class="item" th:href="@{/help}">
+        Ayuda
+    </a>
+    <a class="item" th:href="@{/about}">
+        Acerca de
+    </a>
+</div>
+
+<div class="ui container">
+    <h1 class="ui header">Tareas</h1>
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="task : ${tasks}">
+                <td th:text="${task.title}">Title</td>
+                <td th:text="${task.description}">Description</td>
+                <td th:text="${task.status}">Status</td>
+                <td>
+                   <a class="ui blue button" th:href="@{/tasks/edit/{id}(id=${task.id}, userId=${userId})}">Editar</a>
+                   
+                    <a class="ui red button" th:href="@{/tasks/delete/{id}(id=${task.id}, userId=${userId})}">Borrar</a>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="ui green button" th:href="@{/tasks/add(userId=${userId})}">Nueva</a>
+</div>
+<!-- Semantic UI JavaScript -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+</body>
+</html>
+

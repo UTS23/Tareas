@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <!-- Semantic UI CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
+    <style>
+        /* Custom CSS for the form */
+        body {
+            background-color: #f8f8f8;
+        }
+        .ui.container {
+            margin-top: 50px;
+        }
+        .ui.header {
+            text-align: center;
+        }
+        .ui.form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+        .ui.form .field {
+            margin-bottom: 20px;
+        }
+        .ui.button {
+            width: 100%;
+        }
+        .ui.icon.input input {
+            padding-left: 2.5rem;
+        }
+        .ui.icon.input i.icon {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+        }
+        .ui.animated.button i {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .ui.animated.button:hover i {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+<div class="ui container">
+    
+    <form class="ui form" th:action="@{/register}" th:object="${user}" method="post">
+    <h1 class="ui header">Register</h1>
+        <div class="field">
+            <label>Username</label>
+            <div class="ui left icon input">
+                <i class="user icon"></i>
+                <input type="text" th:field="*{username}" placeholder="Username"/>
+            </div>
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <div class="ui left icon input">
+                <i class="lock icon"></i>
+                <input type="password" th:field="*{password}" placeholder="Password"/>
+            </div>
+        </div>
+        <button class="ui animated button" tabindex="0" type="submit">
+            <div class="visible content">Register</div>
+            <div class="hidden content">
+                <i class="check icon"></i>
+            </div>
+        </button>
+    </form>
+</div>
+<!-- Semantic UI JavaScript -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+</body>
+</html>
